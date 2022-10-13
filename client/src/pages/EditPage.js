@@ -99,15 +99,15 @@ function EditInterview() {
 
 
 
-            <h1 className="head">Edit Interview</h1>
+            <h4 className="head">Edit Interview</h4>
             <div className="col d-flex justify-content-center mt-10 mb-10">
                 <Card style={{ width: "20rem" }}>
                     <Card.Body>
                         <Card.Text>
-                            <p>Start Time: {interview.interview?.startTime}</p>
-                            <p>End Time: {interview.interview?.endTime}</p>
+                            <p>Start Time: {moment(interview.interview?.startTime).format('MMMM Do YYYY, h:mm a')}</p>
+                            <p>End Time: {moment(interview.interview?.endTime).format('MMMM Do YYYY, h:mm a')}</p>
                             <p>
-                                Participents:
+                                Participants:
                                 <ul>
                                     {
                                         interview.interview?.usersInvited.map((email) => {
@@ -125,7 +125,7 @@ function EditInterview() {
                 </Card>
             </div>
 
-
+            <Container width= "10%">
             <form onSubmit={handleFormUsers} className="flex flex-col">
                 <div class="mb-3">
                     <label class="form-label">Date : </label>
@@ -177,7 +177,7 @@ function EditInterview() {
             {/* second form */}
 
             <form onSubmit={handleFormSubmit} className="flex flex-col">
-                <div class="mb-3 mt-5">
+                <div class="mb-3 mt-2">
                 <label>Select Participants : </label>
                 <Select required
                     isMulti
@@ -201,6 +201,7 @@ function EditInterview() {
                     {isFormSubmitting ? "Submitting..." : "Submit"}
                 </button>
             </form>
+            </Container>
         </Container>
     );
 }

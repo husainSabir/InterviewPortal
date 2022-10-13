@@ -1,0 +1,9 @@
+.boxContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin:10% 0;  
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 10px ; 
+}

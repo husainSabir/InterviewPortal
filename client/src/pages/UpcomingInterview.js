@@ -3,8 +3,8 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import { useState, useEffect } from 'react';
 import EditPage from "./EditPage";
-
-
+import "./UpcomingInterview.css"
+import moment from "moment"
 
 function UpcomingInterview() {
 
@@ -20,7 +20,7 @@ function UpcomingInterview() {
         setItems(await res.json());
     }
 
-    async function deleteHandler(id){
+    async function deleteHandler(id) {
         let res = await fetch(`http://127.0.0.1:8000/api/interviews/${id}`, {
             method: "DELETE",
             headers: {
@@ -33,44 +33,42 @@ function UpcomingInterview() {
         fetchdata();
     }, []);
     return (
-        <Container >
+        <>
             <h2 className="head">Upcoming Interviews Details</h2>
-            {
-                items.interviews?.map((currElem) => {
-                    return (
-                        <div className="col d-flex justify-content-center">
-                            <Card className="mt-2 mb-2" style={{ width: '20rem' }}>
-                                <Card.Body>
+            <Container className="mainContainer" >
+                {
+                    items.interviews?.map((currElem) => {
+                        return ( 
+                                <Card className="mainCard">
+                                    <Card.Body>
+                                        <Card.Text>
+                                            <p>Start Time: {moment(currElem.startTime).format('MMMM Do YYYY, h:mm a')}</p>
+                                            <p>End Time: {moment(currElem.endTime).format('MMMM Do YYYY, h:mm a')}</p>
+                                            <p>
+                                                Participants:
+                                                <ul>
+                                                    {
+                                                        currElem.usersInvited.map((email) => {
+                                                            return (
+                                                                <li>
+                                                                    {email}
+                                                                </li>
+                                                            )
+                                                        })
+                                                    }
+                                                </ul>
+                                            </p>
+                                        </Card.Text>
+                                        <Card.Link href={`/edit/${currElem._id}`}><button type="button" class="btn btn-outline-secondary">Edit</button></Card.Link>
 
-                                    <Card.Text>
-                                        <p>Start Time: {currElem.startTime}</p>
-                                        <p>End Time: {currElem.endTime}</p>
-                                        <p>
-                                            Participents:
-                                            <ul>
-                                                {
-                                                    currElem.usersInvited.map((email) => {
-                                                        return (
-                                                            <li>
-                                                                {email}
-                                                            </li>
-                                                        )
-                                                    })
-                                                }
-                                            </ul>
-                                        </p>
-                                    </Card.Text>
-                                    <Card.Link href={`/edit/${currElem._id}`}><button type="button" className="btn btn-info">Edit</button></Card.Link>
-
-                                    <Card.Link href ={"/upcoming"}> <button type="button" onClick = {()=> deleteHandler(currElem._id)} className="btn btn-info">Delete</button></Card.Link>
-                                </Card.Body>
-                            </Card>
-                            
-                        </div>
-                    )
-                })
-            }
-        </Container>
+                                        <Card.Link href={"/upcoming"}> <button type="button" onClick={() => deleteHandler(currElem._id)} className="btn btn-outline-danger">Delete</button></Card.Link>
+                                    </Card.Body>
+                                </Card> 
+                        )
+                    })
+                }
+            </Container>
+        </>
     )
 }
 

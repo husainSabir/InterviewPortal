@@ -1,19 +1,31 @@
 const users = [
     {
-      name: "Kumer Satyam - 1",
-      email: "satyaml05@gmail.com",
+      name: "Husain Sabir",
+      email: "husain@gmail.com",
     },
     {
-      name: "Kumer Satyam - 2",
-      email: "satyam@iiitdmj.ac.in",
+      name: "Kumer Satyam",
+      email: "satyam@gmail.com",
     },
     {
-      name: "Kumer Satyam - 3",
-      email: "satyam05121999@gmail.com",
+      name: "Harshit Shri Mal",
+      email: "harshit@gmail.com",
     },
     {
-      name: "Husain",
-      email: "Husain@scaler.com",
+      name: "Hatim Fidvi",
+      email: "hatim@gmail.com",
+    },
+    {
+      name: "Manhar Gupta",
+      email: "manhar@gmail.com",
+    },
+    {
+      name: "Abhishek Kumar",
+      email: "abhishek@gmail.com",
+    },
+    {
+      name: "Rishabh Negi",
+      email: "rishabh@gmail.com",
     },
   ];
   

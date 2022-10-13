@@ -13,7 +13,7 @@ function Header() {
       <Navbar.Brand href="/">Interview Portal</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        <Nav.Link className="husain" href="/upcoming"><Button variant="primary">Upcoming Interviews</Button></Nav.Link>
+        <Nav.Link className="navmargin" href="/upcoming"><Button variant="primary">Upcoming Interviews</Button></Nav.Link>
         <Nav.Link href="/schedule"><Button variant="success">Schedule Interviews</Button></Nav.Link>
       </Navbar.Collapse>
     </Container>

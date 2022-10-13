@@ -102,7 +102,8 @@ function ScheduleInterview() {
 
   return (
     <Container fluid className="UpcomingSchedule">
-      <h1 className="head">Schedule a new Interview</h1>
+      <Container width= "10%">
+      <h3 className="head">Schedule a new Interview</h3>
 
       <form onSubmit={handleFormUsers} className="flex flex-col">
 
@@ -142,8 +143,8 @@ function ScheduleInterview() {
 
         
         <button
-          type="submit"
-          class="btn btn-primary"
+          type="submit" 
+          class="btn btn-primary "
           disabled={isFormSubmitting}
         >
           {isFormSubmitting ? "Submitting..." : "Submit"}
@@ -176,13 +177,13 @@ function ScheduleInterview() {
 
         <button
           type="submit"
-          class="btn btn-primary"
+          class=" .buttcen btn btn-primary"
           disabled={isFormSubmitting}
         >
           {isFormSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
-
+      </Container>
     </Container>
 
   )

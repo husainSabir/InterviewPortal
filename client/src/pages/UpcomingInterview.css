@@ -1,4 +1,9 @@
-.husain{
-    display: flex;
-    justify-content: center;
+
+.mainContainer{
+    display: flex; 
+    flex-direction: row ;
+    flex-wrap: wrap;
+}
+.mainCard{
+    margin:10px 10px;
 }
