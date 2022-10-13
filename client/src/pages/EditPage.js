@@ -91,7 +91,7 @@ function EditInterview() {
             }),
         });
         let resJson = await res.json();
-        navigate('/upcoming');
+        navigate('/upcoming'); // Redirecting to upcomingInterview.js
     };
     return (
 
@@ -108,6 +108,7 @@ function EditInterview() {
                             <p>End Time: {moment(interview.interview?.endTime).format('MMMM Do YYYY, h:mm a')}</p>
                             <p>
                                 Participants:
+                            
                                 <ul>
                                     {
                                         interview.interview?.usersInvited.map((email) => {
