@@ -1,8 +1,16 @@
-const mongoose = require("mongoose");
+import { Schema, model, Document, Types } from "mongoose";
 
-const { Schema } = mongoose;
+export interface IInterview extends Document {
+  title: string;
+  role: string;
+  startTime: Date;
+  endTime: Date;
+  usersInvited: Types.ObjectId[];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
-const interviewSchema = new Schema(
+const interviewSchema = new Schema<IInterview>(
   {
     title: {
       type: String,
@@ -32,6 +40,8 @@ const interviewSchema = new Schema(
   { timestamps: true }
 );
 
-const Interview = mongoose.model("Interview", interviewSchema);
+const Interview = model<IInterview>("Interview", interviewSchema);
 
-module.exports = Interview;
+export default Interview;
+
+
