@@ -1,17 +1,15 @@
-const User = require("../models/user");
+const asyncHandler = require("express-async-handler");
+const userUseCases = require("../usecases/user");
 
-const getAllUsersEmail = async (req, res) => {
+const getAllUsersEmail = asyncHandler(async (req, res) => {
   try {
-    const users = await User.find({}).select("email -_id").lean().exec();
-
-    return res.status(200).json({
-      users,
-    });
+    const result = await userUseCases.getAllUsersEmail();
+    res.status(200).json(result);
   } catch (err) {
-    return res.status(500).json({
+    res.status(500).json({
       message: "Internal server error.",
     });
   }
-};
+});
 
 module.exports = { getAllUsersEmail };
