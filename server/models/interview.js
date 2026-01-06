@@ -4,6 +4,16 @@ const { Schema } = mongoose;
 
 const interviewSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: [true, "Interview title is required."],
+      trim: true,
+    },
+    role: {
+      type: String,
+      required: [true, "Role is required."],
+      trim: true,
+    },
     startTime: {
       type: Date,
       required: [true, "Start time of interview is required."],
