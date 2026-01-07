@@ -62,7 +62,7 @@ function UpcomingInterview() {
                                     <Card key={currElem._id} className="mainCard">
                                         <Card.Body>
                                             <Card.Title>{currElem.title || "Untitled Interview"}</Card.Title>
-                                            <Card.Subtitle className="mb-2 text-muted">{currElem.role || "No role specified"}</Card.Subtitle>
+                                            <Card.Subtitle className="mb-2 text-muted">{currElem.role + " - " + currElem.companyName || "No role specified"}</Card.Subtitle>
                                             <Card.Text>
                                                 <p><strong>Start Time:</strong> {moment(currElem.startTime).format('MMMM Do YYYY, h:mm a')}</p>
                                                 <p><strong>End Time:</strong> {moment(currElem.endTime).format('MMMM Do YYYY, h:mm a')}</p>
