@@ -22,6 +22,9 @@ const ensureValidWindow = (startTime: Date, endTime: Date): void => {
 export const addInterview = async ({
   title,
   role,
+  companyName,
+  roleDescription,
+  companyDescription,
   startTime,
   endTime,
   usersInvited,
@@ -31,6 +34,15 @@ export const addInterview = async ({
   }
   if (!role || role.trim() === "") {
     throw new Error("Role is required");
+  }
+  if (!companyName || companyName.trim() === "") {
+    throw new Error("Company name is required");
+  }
+  if (!roleDescription || roleDescription.trim() === "") {
+    throw new Error("Role description is required");
+  }
+  if (!companyDescription || companyDescription.trim() === "") {
+    throw new Error("Company description is required");
   }
   if (!startTime) {
     throw new Error("Start Time is not valid");
@@ -67,6 +79,9 @@ export const addInterview = async ({
   const newInterview = {
     title: title.trim(),
     role: role.trim(),
+    companyName: companyName.trim(),
+    roleDescription: roleDescription.trim(),
+    companyDescription: companyDescription.trim(),
     startTime: start,
     endTime: end,
     usersInvited: userIds,
@@ -191,6 +206,9 @@ export const updateInterviewDetails = async ({
   interviewId,
   title,
   role,
+  companyName,
+  roleDescription,
+  companyDescription,
   startTime,
   endTime,
   usersInvited,
@@ -200,6 +218,15 @@ export const updateInterviewDetails = async ({
   }
   if (!role || role.trim() === "") {
     throw new Error("Role is required");
+  }
+  if (!companyName || companyName.trim() === "") {
+    throw new Error("Company name is required");
+  }
+  if (!roleDescription || roleDescription.trim() === "") {
+    throw new Error("Role description is required");
+  }
+  if (!companyDescription || companyDescription.trim() === "") {
+    throw new Error("Company description is required");
   }
   if (!startTime) {
     throw new Error("Start Time is not valid");
@@ -283,6 +310,9 @@ export const updateInterviewDetails = async ({
     {
       title: title.trim(),
       role: role.trim(),
+      companyName: companyName.trim(),
+      roleDescription: roleDescription.trim(),
+      companyDescription: companyDescription.trim(),
       startTime: start,
       endTime: end,
       usersInvited: userIds,

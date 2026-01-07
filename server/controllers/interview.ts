@@ -24,12 +24,15 @@ type UpdateInterviewRequest = Request<
 
 export const addInterview = asyncHandler(
   async (req: AddInterviewRequest, res: Response) => {
-    const { title, role, startTime, endTime, usersInvited } = req.body;
+    const { title, role, companyName, roleDescription, companyDescription, startTime, endTime, usersInvited } = req.body;
 
     try {
       const result = await addInterviewUseCase({
         title,
         role,
+        companyName,
+        roleDescription,
+        companyDescription,
         startTime,
         endTime,
         usersInvited,
@@ -97,13 +100,16 @@ export const deleteInterviewById = asyncHandler(
 export const updateInterviewDetails = asyncHandler(
   async (req: UpdateInterviewRequest, res: Response) => {
     const { interviewId } = req.params;
-    const { title, role, startTime, endTime, usersInvited } = req.body;
+    const { title, role, companyName, roleDescription, companyDescription, startTime, endTime, usersInvited } = req.body;
 
     try {
       const result = await updateInterviewDetailsUseCase({
         interviewId,
         title,
         role,
+        companyName,
+        roleDescription,
+        companyDescription,
         startTime,
         endTime,
         usersInvited,

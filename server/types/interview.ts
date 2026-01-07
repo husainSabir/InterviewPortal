@@ -5,6 +5,9 @@ import { IInterview } from "../models/interview";
 export interface AddInterviewInput {
   title: string;
   role: string;
+  companyName: string;
+  roleDescription: string;
+  companyDescription: string;
   startTime: string | Date;
   endTime: string | Date;
   usersInvited: string[];

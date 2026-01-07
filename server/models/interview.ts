@@ -3,6 +3,9 @@ import { Schema, model, Document, Types } from "mongoose";
 export interface IInterview extends Document {
   title: string;
   role: string;
+  companyName: string;
+  roleDescription: string;
+  companyDescription: string;
   startTime: Date;
   endTime: Date;
   usersInvited: Types.ObjectId[];
@@ -20,6 +23,21 @@ const interviewSchema = new Schema<IInterview>(
     role: {
       type: String,
       required: [true, "Role is required."],
+      trim: true,
+    },
+    companyName: {
+      type: String,
+      required: [true, "Company name is required."],
+      trim: true,
+    },
+    roleDescription: {
+      type: String,
+      required: [true, "Role description is required."],
+      trim: true,
+    },
+    companyDescription: {
+      type: String,
+      required: [true, "Company description is required."],
       trim: true,
     },
     startTime: {
@@ -43,5 +61,6 @@ const interviewSchema = new Schema<IInterview>(
 const Interview = model<IInterview>("Interview", interviewSchema);
 
 export default Interview;
+
 
 
