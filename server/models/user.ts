@@ -20,7 +20,6 @@ const userSchema = new Schema<IUser>(
       trim: true,
       lowercase: true,
       required: [true, "email is requried."],
-      unique: [true, "email is already taken."],
       validate: [isEmail, "invalid email"],
     },
     interviewsScheduled: [

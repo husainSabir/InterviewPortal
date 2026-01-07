@@ -1,7 +1,7 @@
 import User from "../models/user";
-import { UsersEmailResult } from "../types/user";
+import { GetAllUsersEmailResult } from "../types/user";
 
-export const getAllUsersEmail = async (): Promise<UsersEmailResult> => {
+export const getAllUsersEmail = async (): Promise<GetAllUsersEmailResult> => {
   const users = await User.find({})
     .select("email -_id")
     .lean()

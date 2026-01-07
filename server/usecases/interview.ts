@@ -7,7 +7,10 @@ import {
   UpdateInterviewInput,
   UserWithInterviews,
   LeanInterview,
+  GenerateDescriptionsInput,
+  GenerateDescriptionsOutput,
 } from "../types/interview";
+import { generateBothDescriptions } from "../utils/aiService";
 
 const ensureValidWindow = (startTime: Date, endTime: Date): void => {
   if (endTime < startTime) {
@@ -322,6 +325,32 @@ export const updateInterviewDetails = async ({
   return { message: "Successfully updated." };
 };
 
+export const generateDescriptions = async ({
+  companyName,
+  role,
+}: GenerateDescriptionsInput): Promise<GenerateDescriptionsOutput> => {
+  if (!companyName || companyName.trim() === "") {
+    throw new Error("Company name is required");
+  }
+  if (!role || role.trim() === "") {
+    throw new Error("Role is required");
+  }
+
+  try {
+    const descriptions = await generateBothDescriptions(
+      companyName.trim(),
+      role.trim()
+    );
+
+    return descriptions;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Failed to generate descriptions");
+  }
+};
+
 export default {
   addInterview,
   getAvailableUsers,
@@ -329,6 +358,7 @@ export default {
   getInterviewById,
   deleteInterviewById,
   updateInterviewDetails,
+  generateDescriptions,
 };
 
 

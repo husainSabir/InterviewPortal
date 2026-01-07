@@ -29,4 +29,14 @@ export type LeanInterview = IInterview & {
   usersInvited: Types.ObjectId[] | string[];
 };
 
+export interface GenerateDescriptionsInput {
+  companyName: string;
+  role: string;
+}
+
+export interface GenerateDescriptionsOutput {
+  companyDescription: string;
+  roleDescription: string;
+}
+
 
