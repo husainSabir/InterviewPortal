@@ -1,9 +1,15 @@
-const mongoose = require("mongoose");
-const { isEmail } = require("validator");
+import { Schema, model, Document, Types } from "mongoose";
+import { isEmail } from "validator";
 
-const { Schema } = mongoose;
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  interviewsScheduled: Types.ObjectId[];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
-const userSchema = new Schema(
+const userSchema = new Schema<IUser>(
   {
     name: {
       type: String,
@@ -14,7 +20,6 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
       required: [true, "email is requried."],
-      unique: [true, "email is already taken."],
       validate: [isEmail, "invalid email"],
     },
     interviewsScheduled: [
@@ -27,6 +32,9 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = model<IUser>("User", userSchema);
 
-module.exports = User;
+export default User;
+
+
+
