@@ -64,15 +64,17 @@ export const generateCompanyDescription = async (
     return completion.choices[0]?.message?.content?.trim() || getGenericCompanyDescription(companyName);
   } catch (error) {
     console.error("Error generating company description:", error);
+
+    throw error;
     
     // Return generic description if API limit is reached or any error occurs
-    if (isApiLimitError(error)) {
-      console.warn("API limit reached, using fallback description for company");
-    } else {
-      console.warn("API error occurred, using fallback description for company");
-    }
+    // if (isApiLimitError(error)) {
+    //   console.warn("API limit reached, using fallback description for company");
+    // } else {
+    //   console.warn("API error occurred, using fallback description for company");
+    // }
     
-    return getGenericCompanyDescription(companyName);
+    // return getGenericCompanyDescription(companyName);
   }
 };
 
